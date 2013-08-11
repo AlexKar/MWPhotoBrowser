@@ -369,7 +369,8 @@ navigationBarBackgroundImageLandscapePhone = _navigationBarBackgroundImageLandsc
     [self setNavBarAppearance:animated];
     
     // Update UI
-	[self hideControlsAfterDelay];
+	//[self hideControlsAfterDelay];
+    [self hideControls];
     
 }
 

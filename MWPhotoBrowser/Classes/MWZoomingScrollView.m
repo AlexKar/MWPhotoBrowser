@@ -44,7 +44,7 @@
 		// Image view
 		_photoImageView = [[MWTapDetectingImageView alloc] initWithFrame:CGRectZero];
 		_photoImageView.tapDelegate = self;
-		_photoImageView.contentMode = UIViewContentModeCenter;
+		_photoImageView.contentMode = UIViewContentModeTop;
 		_photoImageView.backgroundColor = [UIColor blackColor];
 		[self addSubview:_photoImageView];
 		
@@ -119,7 +119,7 @@
 			photoImageViewFrame.origin = CGPointZero;
 			photoImageViewFrame.size = img.size;
 			_photoImageView.frame = photoImageViewFrame;
-			self.contentSize = photoImageViewFrame.size;
+			self.contentSize = CGSizeMake(320, img.size.height);
 
 			// Set zoom to minimum zoom
 			[self setMaxMinZoomScalesForCurrentBounds];
@@ -158,14 +158,15 @@
     
     // Calculate Min
     CGFloat xScale = boundsSize.width / imageSize.width;    // the scale needed to perfectly fit the image width-wise
-    CGFloat yScale = boundsSize.height / imageSize.height;  // the scale needed to perfectly fit the image height-wise
-    CGFloat minScale = MIN(xScale, yScale);                 // use minimum of these to allow the image to become fully visible
+  //  CGFloat yScale = boundsSize.height / imageSize.height;  // the scale needed to perfectly fit the image height-wise
+    CGFloat minScale = MIN(xScale, 1.0f);                 // use minimum of these to allow the image to become fully visible
 	
 	// If image is smaller than the screen then ensure we show it at
 	// min scale of 1
-	if (xScale > 1 && yScale > 1) {
-		minScale = 1.0;
-	}
+
+	//if (xScale > 1 && yScale > 1) {
+	//	minScale = 1.0;
+	//}
     
 	// Calculate Max
 	CGFloat maxScale = 2.0; // Allow double scale
